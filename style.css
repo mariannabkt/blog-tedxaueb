@@ -1,0 +1,497 @@
+/*
+Theme Name: TEDxAUEB Blog
+Author: TEDxAUEB
+Description: A simple blog theme with a grid background and structured post layout.
+Version: 1.2
+*/
+
+/* === Basic Styles === */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    --manrope-font: "Manrope", arial;
+    --inter-font: "Inter", arial;
+    --ted-red: #eb0028;
+}
+
+
+body {
+    font-family: var(--manrope-font);
+    margin: 0;
+    background-color: black;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+    background-size: 50px 50px;
+    c
+    color: #f5f5f5;
+    padding-top: 50px;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    padding: 0 50px 50px;
+}
+
+.post-container {
+    background: rgb(255, 255, 255);
+    width: 100%;
+    max-width: 350px;
+    min-height: 700px;
+    position: relative;
+}
+
+.post-container a,
+.post-container h1,
+.article p {
+    text-decoration: none;
+    color: black;
+}
+
+.post-meta {
+    padding: 0 25px;
+}
+
+.post-container img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.page-title {
+    height: 50px;
+    margin: 50px;
+    line-height: 50px;
+}
+
+.post-container .author-img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.post-date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px 10px;
+    background: var(--ted-red);
+    color: white;
+}
+
+.post-author {
+    background-color: var(--ted-red);
+    color: white;
+    width: max-content;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 1em 0;
+}
+
+.read-more {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    background: var(--ted-red);
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.read-more p {
+    padding-left: 25px;
+    font-weight: 600;
+}
+
+.read-more img {
+    width: 40px;
+    height: 40px;
+    rotate: 45deg;
+    padding: 10px;
+    filter: invert(1);
+    transition: 0.3s ease-in-out;
+}
+
+.read-more:hover img {
+    rotate: -45deg;
+}
+
+
+.article {
+    max-width: 1050px;
+    margin: 50px auto;
+}
+
+.article>img {
+    height: 550px;
+}
+
+.article .post-meta {
+    padding: 20px 50px 50px;
+}
+
+.post-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.previous-post,
+.next-post {
+    background-color: var(--ted-red);
+    display: flex;
+    max-width: 400px;
+    align-items: center;
+}
+
+.prev-button,
+.next-button {
+    padding: 10px 20px;
+    background-color: var(--ted-red);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+}
+
+.post-navigation .next-arrow,
+.post-navigation .prev-arrow {
+    width: 40px;
+    height: 40px;
+    filter: invert(1);
+    padding: 0 10px;
+}
+
+.post-navigation .prev-arrow {
+    rotate: 180deg;
+}
+
+.post-navigation .prev-arrow,
+.post-navigation .next-arrow {
+    transform: translatex(-10px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.prev-button a,
+.next-button a {
+    color: white;
+}
+
+.prev-button {
+    text-align: left;
+}
+
+.next-button {
+    text-align: right;
+}
+
+.previous-post:hover .prev-arrow,
+.next-post:hover .next-arrow {
+    transform: translatex(3px);
+}
+
+.post-meta a {
+    color: var(--ted-red);
+}
+
+.post-meta a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 450px) {
+    .article .post-meta {
+        padding: 20px;
+    }
+}
+
+
+
+
+/* Header - Footer Styles */
+
+.main-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+.head {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    backdrop-filter: none;
+    transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
+    z-index: 1003;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 4%;
+    box-sizing: border-box;
+}
+
+.head.scrolled {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+}
+
+.logo {
+    height: 25px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.4rem;
+}
+
+.menu a:hover {
+    border-bottom: 2px solid white;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    justify-content: space-between;
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.hamburger .bar1,
+.hamburger .bar3 {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.open .bar1 {
+    transform: rotate(45deg);
+    position: relative;
+    top: 8px;
+}
+
+.hamburger.open .bar2 {
+    opacity: 0;
+}
+
+.hamburger.open .bar3 {
+    transform: rotate(-45deg);
+    position: relative;
+    top: -8px;
+}
+
+/* Overlay Menu */
+.overlay-menu {
+    position: fixed;
+    top: 0;
+    right: -230px;
+    /* Initially hidden off-screen */
+    width: 230px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Dark background similar to the header */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transition: right 0.3s ease;
+    z-index: 1002;
+    backdrop-filter: blur(8px);
+    /* Same blur effect as the header */
+}
+
+.overlay-menu.active {
+    right: 0;
+}
+
+.overlay-header {
+    width: 100%;
+    padding: 20px;
+    text-align: right;
+}
+
+.close-btn {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Overlay Navigation */
+.overlay-nav ul {
+    list-style: none;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.overlay-nav li {
+    margin: 20px 0;
+    font-size: 1.5rem;
+}
+
+.overlay-nav a {
+    text-decoration: none;
+    color: white;
+}
+
+.overlay-nav a:hover {
+    border-bottom: 2px solid white;
+}
+
+/* Media Queries for Tablet and Mobile */
+@media (max-width: 800px) {
+    .menu {
+        display: none;
+        /* Hide the default menu on smaller screens */
+    }
+
+    .hamburger {
+        display: flex;
+        /* Show the hamburger menu */
+    }
+
+    .overlay-menu.active {
+        background-color: rgba(0, 0, 0, 0.9);
+        /* Slightly darker background on overlay */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        height: 40px;
+        /* Adjust logo size for smaller screens */
+    }
+
+    .head {
+        padding: 2% 4%;
+    }
+}
+
+footer {
+    position: relative;
+    z-index: 1000;
+}
+
+.top-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    border-width: 0;
+    background-color: #0e0e0e;
+    color: #ffffff;
+    gap: 15px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#typewriter {
+    font-size: 1.8rem;
+    min-height: 125px;
+}
+
+.footer-right {
+    display: flex;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    padding: 30px 50px 10px;
+    position: relative;
+    z-index: 50;
+}
+
+.footer-logo {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.footer-text p {
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+    color: white;
+}
+
+.social-icons {
+    display: flex;
+    gap: 25px;
+}
+
+.social-icon {
+    padding: 7px;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    border-radius: 50px;
+    font-size: 24px;
+    color: #ffffff;
+    background-color: #eb0028;
+}
+
+.social-icon:hover {
+    background-color: #ffffff;
+    color: #eb0028;
+}
+
+/* Ensure responsive layout */
+@media (max-width: 668px) {
+    .top-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-left {
+        align-items: center;
+        padding-bottom: 0;
+    }
+
+    .footer-text p {
+        text-align: center;
+    }
+}
